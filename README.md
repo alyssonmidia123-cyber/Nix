@@ -2,251 +2,314 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#050505">
-    <title>NIX - A Dona da Noite</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nix - A Dona da Noite | Guia de Reservas</title>
     <style>
-        :root {
-            --bg-color: #050505;
-            --card-bg: #121212;
-            --accent-color: #bc13fe;
-            --secondary-accent: #ff00de;
-            --text-color: #ffffff;
-            --success: #00ff88;
+        /* Estilização Geral */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Inter', sans-serif;
-            margin: 0; padding: 20px; padding-bottom: 100px;
+            background-color: #050505;
+            color: #ffffff;
             overflow-x: hidden;
         }
 
-        /* --- SPLASH SCREEN --- */
-        #splash {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #000; z-index: 9999; display: flex;
-            align-items: center; justify-content: center; text-align: center;
-            transition: opacity 0.8s ease;
-        }
-        .logo-nix {
-            font-family: 'Orbitron', sans-serif; font-size: 60px;
-            background: linear-gradient(to right, var(--accent-color), var(--secondary-accent));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(188, 19, 254, 0.5);
+        /* Header */
+        header {
+            padding: 20px 5%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
         }
 
-        /* --- UI ELEMENTS --- */
-        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
-        .brand { font-family: 'Orbitron', sans-serif; font-size: 22px; color: var(--accent-color); letter-spacing: 2px; }
-        
-        .filter-box { 
-            background: var(--card-bg); padding: 15px; border-radius: 20px; 
-            margin-bottom: 25px; border: 1px solid #222;
-        }
-        input[type=range] { width: 100%; accent-color: var(--secondary-accent); margin-top: 10px; }
-
-        /* --- CARDS --- */
-        .card {
-            background: var(--card-bg); border-radius: 24px; overflow: hidden;
-            margin-bottom: 20px; border: 1px solid #1a1a1a; position: relative;
-        }
-        .card-img { width: 100%; height: 200px; object-fit: cover; filter: brightness(0.8); }
-        .card-badge {
-            position: absolute; top: 15px; right: 15px;
-            background: rgba(0,0,0,0.7); padding: 5px 12px; border-radius: 10px;
-            font-size: 12px; border: 1px solid var(--accent-color);
-        }
-        .card-info { padding: 18px; }
-        .price-tag { font-size: 22px; font-weight: bold; color: var(--success); }
-
-        /* --- BUTTONS --- */
-        .btn-main {
-            background: linear-gradient(45deg, var(--accent-color), var(--secondary-accent));
-            color: white; border: none; padding: 12px 25px; border-radius: 14px;
-            font-weight: 600; cursor: pointer; font-family: 'Inter';
-        }
-
-        /* --- MODALS --- */
-        .modal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9); z-index: 5000; display: none; align-items: flex-end;
-        }
-        .modal-content {
-            background: var(--card-bg); width: 100%; max-height: 90%;
-            border-radius: 30px 30px 0 0; padding: 25px; overflow-y: auto;
-            border-top: 2px solid var(--accent-color);
-        }
-
-        /* --- NAV BAR --- */
         nav {
-            position: fixed; bottom: 0; left: 0; width: 100%; height: 75px;
-            background: rgba(5,5,5,0.95); backdrop-filter: blur(15px);
-            display: flex; justify-content: space-around; align-items: center;
-            border-top: 1px solid #222; z-index: 4000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .nav-icon { font-size: 24px; color: #555; cursor: pointer; transition: 0.3s; }
-        .nav-active { color: var(--accent-color); filter: drop-shadow(0 0 8px var(--accent-color)); }
 
-        /* --- ADMIN/OWNER STYLES --- */
-        .admin-input { 
-            width: 100%; padding: 15px; background: #000; border: 1px solid #333; 
-            border-radius: 12px; color: white; margin: 10px 0; 
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 5px;
+            color: #9d4edd;
+            text-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #9d4edd;
+        }
+
+        .btn-reserva {
+            background: #9d4edd;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(5,5,5,1)), 
+                        url('https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?q=80&w=2000') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #ccc;
+        }
+
+        /* Barra de Busca */
+        .search-bar {
+            background: white;
+            padding: 8px;
+            border-radius: 50px;
+            display: flex;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 0 30px rgba(157, 78, 221, 0.2);
+        }
+
+        .search-bar input {
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            flex: 1;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .search-bar button {
+            background: #240046;
+            color: white;
+            border: none;
+            padding: 0 35px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .search-bar button:hover {
+            background: #9d4edd;
+        }
+
+        /* Seção de Destaques */
+        .destaques {
+            padding: 60px 5%;
+        }
+
+        .container h2 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            text-align: center;
+            border-bottom: 2px solid #9d4edd;
+            display: table;
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 10px;
+        }
+
+        .grid-destaques {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* Cards */
+        .card {
+            background: #111;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.4s;
+            border: 1px solid #222;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #9d4edd;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+        }
+
+        .card-img {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #9d4edd;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .card-info {
+            padding: 25px;
+        }
+
+        .card-info h3 {
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .card-info p {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #222;
+            padding-top: 20px;
+        }
+
+        .preco {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .btn-view {
+            color: #9d4edd;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .btn-view:hover {
+            letter-spacing: 2px;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .hero-content h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <div id="splash">
-        <div>
-            <div class="logo-nix">NIX</div>
-            <p style="letter-spacing: 3px; color: #666; font-size: 12px;">A DONA DA NOITE</p>
-        </div>
-    </div>
-
     <header>
-        <div class="brand">NIX</div>
-        <div onclick="abrirAdmin()" style="cursor:pointer">⚙️</div>
+        <nav>
+            <div class="logo">NIX</div>
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Cidades</a></li>
+                <li><a href="#">Privacidade</a></li>
+                <li><a href="#" class="btn-reserva">ENTRAR</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <div class="filter-box">
-        <div style="display:flex; justify-content:space-between">
-            <span>Preço Máximo</span>
-            <span id="price-label" style="color:var(--secondary-accent)">R$ 300</span>
-        </div>
-        <input type="range" id="price-range" min="60" max="800" value="300" oninput="atualizarFiltro()">
-    </div>
-
-    <div id="lista-moteis"></div>
-
-    <div id="modal-reserva" class="modal" onclick="fecharModal()">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <h2 id="m-nome" style="margin-top:0">Nome do Motel</h2>
-            <p id="m-dist" style="color:var(--accent-color)"></p>
-            <hr style="border:0; border-top:1px solid #222; margin:20px 0">
-            <h3>Pague via PIX para Garantir</h3>
-            <div style="background:#000; padding:20px; border-radius:15px; text-align:center; border:1px dashed var(--success)">
-                <p style="font-size:12px; color:#888">Copie a chave abaixo:</p>
-                <code style="color:var(--success); word-break: break-all;">00020126580014br.gov.bcb.pix0136nix-pagamentos-transacionais-oficial</code>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Nix: A Dona da Noite</h1>
+            <p>Sua jornada noturna começa com discrição e sofisticação.</p>
+            <div class="search-bar">
+                <input type="text" placeholder="Bairro, Cidade ou Nome do Motel...">
+                <button>BUSCAR</button>
             </div>
-            <button class="btn-main" style="width:100%; margin-top:20px; padding:18px" onclick="finalizarGo()">JÁ PAGUEI, QUERO MEU GO!</button>
         </div>
-    </div>
+    </section>
 
-    <div id="modal-admin" class="modal">
-        <div class="modal-content" style="height:80%">
-            <h2 style="font-family:Orbitron; color:var(--accent-color)">NIX CONTROL</h2>
-            <p>Gerenciar Unidade: **Opium Premium**</p>
-            <label>Novo Preço da Suíte (R$):</label>
-            <input type="number" id="adm-preco" class="admin-input" placeholder="150.00">
-            <label>Status Atual:</label>
-            <select id="adm-status" class="admin-input">
-                <option value="disponivel">🟢 Disponível agora</option>
-                <option value="lotado">🔴 Lotado</option>
-            </select>
-            <button class="btn-main" style="width:100%; margin-top:20px" onclick="salvarAdmin()">ATUALIZAR PLATAFORMA</button>
-            <button onclick="document.getElementById('modal-admin').style.display='none'" style="background:none; border:none; color:#555; width:100%; margin-top:15px">Sair</button>
-        </div>
-    </div>
-
-    <nav>
-        <div class="nav-icon nav-active">🔍</div>
-        <div class="nav-icon">🔥</div>
-        <div class="nav-icon">❤️</div>
-        <div class="nav-icon" onclick="alert('Histórico de Noites em breve!')">🕒</div>
-    </nav>
-
-    <script>
-        // Dados Iniciais (Simulando Banco de Dados)
-        let moteis = [
-            { id: 0, nome: "Opium Premium", lat: -23.519, lng: -46.664, preco: 189, img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=500" },
-            { id: 1, nome: "Lina Concept", lat: -23.548, lng: -46.591, preco: 120, img: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=500" },
-            { id: 2, nome: "Mint Privé", lat: -23.485, lng: -46.551, preco: 250, img: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=500" }
-        ];
-
-        let userPos = { lat: -23.5505, lng: -46.6333 }; // Default SP
-
-        // Inicialização
-        window.onload = () => {
-            setTimeout(() => {
-                document.getElementById('splash').style.opacity = '0';
-                setTimeout(() => document.getElementById('splash').style.display = 'none', 800);
-            }, 2500);
-
-            if(navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(p => {
-                    userPos = { lat: p.coords.latitude, lng: p.coords.longitude };
-                    render();
-                });
-            }
-            render();
-        };
-
-        // Cálculo de Distância Real
-        function getDist(lat1, lon1, lat2, lon2) {
-            const R = 6371;
-            const dLat = (lat2-lat1) * Math.PI/180;
-            const dLon = (lon2-lon1) * Math.PI/180;
-            const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)**2;
-            return (R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))).toFixed(1);
-        }
-
-        function render() {
-            const lista = document.getElementById('lista-moteis');
-            const maxP = document.getElementById('price-range').value;
-            document.getElementById('price-label').innerText = `R$ ${maxP}`;
-            
-            lista.innerHTML = "";
-            moteis.filter(m => m.preco <= maxP).forEach(m => {
-                const d = getDist(userPos.lat, userPos.lng, m.lat, m.lng);
-                lista.innerHTML += `
-                    <div class="card" onclick="abrirReserva(${m.id}, ${d})">
-                        <img src="${m.img}" class="card-img">
-                        <div class="card-badge">📍 ${d} km</div>
-                        <div class="card-info">
-                            <h3 style="margin:0">${m.nome}</h3>
-                            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px">
-                                <span class="price-tag">R$ ${m.preco}</span>
-                                <button class="btn-main">RESERVAR</button>
-                            </div>
+    <section class="destaques">
+        <div class="container">
+            <h2>EXPERIÊNCIAS EM DESTAQUE</h2>
+            <div class="grid-destaques">
+                
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=600');">
+                        <span class="tag">Luxo Premium</span>
+                    </div>
+                    <div class="card-info">
+                        <h3>Suíte Eclipse</h3>
+                        <p>Hidromassagem com vista para o céu, automação via tablet e menu gourmet.</p>
+                        <div class="card-footer">
+                            <span class="preco">R$ 280,00</span>
+                            <a href="#" class="btn-view">RESERVAR</a>
                         </div>
-                    </div>`;
-            });
-        }
+                    </div>
+                </div>
 
-        function atualizarFiltro() { render(); }
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?q=80&w=600');">
+                        <span class="tag">Mais Procurada</span>
+                    </div>
+                    <div class="card-info">
+                        <h3>Refúgio de Nix</h3>
+                        <p>Iluminação em neon customizável, som de alta fidelidade e cadeira erótica.</p>
+                        <div class="card-footer">
+                            <span class="preco">R$ 195,00</span>
+                            <a href="#" class="btn-view">RESERVAR</a>
+                        </div>
+                    </div>
+                </div>
 
-        function abrirReserva(id, d) {
-            const m = moteis.find(x => x.id == id);
-            document.getElementById('m-nome').innerText = m.nome;
-            document.getElementById('m-dist').innerText = `Você está a ${d} km desta experiência.`;
-            document.getElementById('modal-reserva').style.display = 'flex';
-        }
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1584132967334-10e028bd69f7?q=80&w=600');">
+                        <span class="tag">Privacidade Absoluta</span>
+                    </div>
+                    <div class="card-info">
+                        <h3>Oásis Secreto</h3>
+                        <p>Entrada e saída totalmente privativas, piscina aquecida e garagem dupla.</p>
+                        <div class="card-footer">
+                            <span class="preco">R$ 340,00</span>
+                            <a href="#" class="btn-view">RESERVAR</a>
+                        </div>
+                    </div>
+                </div>
 
-        function fecharModal() { document.getElementById('modal-reserva').style.display = 'none'; }
+            </div>
+        </div>
+    </section>
 
-        function finalizarGo() {
-            alert("🔥 PAGAMENTO RECEBIDO! Sua entrada foi liberada via GPS. Mostre esta tela na recepção.");
-            fecharModal();
-        }
-
-        // Funções Admin
-        function abrirAdmin() { document.getElementById('modal-admin').style.display = 'flex'; }
-        
-        function salvarAdmin() {
-            const p = document.getElementById('adm-preco').value;
-            if(p) {
-                moteis[0].preco = parseInt(p);
-                render();
-                alert("NIX: Preço atualizado no app dos usuários!");
-                document.getElementById('modal-admin').style.display = 'none';
-            }
-        }
-    </script>
 </body>
 </html>
